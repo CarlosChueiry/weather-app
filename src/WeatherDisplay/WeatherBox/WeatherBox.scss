@@ -1,0 +1,69 @@
+.weather-box {
+	display: flex;
+	align-items: center;
+
+	width: fit-content;
+	max-width: 40%;
+
+	border-radius: 40px;
+	background: linear-gradient(
+		to right bottom,
+		rgba(255, 255, 255, 0.6),
+		rgba(255, 255, 255, 0.2)
+	);
+	&.display-box {
+		transition: 0.2s linear;
+		opacity: 1;
+		height: 10%;
+		padding: 48px 24px 48px 8px;
+		margin-top: 16px;
+
+		animation-name: fadeInOpacity;
+		animation-iteration-count: 1;
+		animation-timing-function: ease-in;
+		animation-duration: 1s;
+	}
+	// backdrop-filter: blur(10px);
+	// z-index: 2;
+	.weather {
+		&-left {
+			display: flex;
+			justify-content: center;
+		}
+		&-right {
+			flex-grow: 1;
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+			justify-content: center;
+			font-family: 'Open Sans', sans-serif;
+			&-date {
+				color: #113555cc;
+				font-weight: 600;
+				// text-shadow: 1px 1px rgba(50, 50, 70, 0.3);
+			}
+			&-location {
+				color: #113555cc;
+				// font-size: 32px;
+				// text-shadow: 1.5px 1.5px rgba(50, 50, 70, 0.5);
+				font-size: 28px;
+				text-shadow: 1px 1.5px rgba(50, 50, 70, 0.5);
+				margin-bottom: 4px;
+			}
+			&-temperature,
+			&-weather {
+				color: #557799;
+				font-weight: 500;
+			}
+		}
+	}
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
