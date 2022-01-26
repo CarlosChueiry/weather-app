@@ -8,7 +8,9 @@ export default function WeatherContext(props) {
 	const [date, setDate] = useState('');
 	const [weatherIcon, setWeatherIcon] = useState('');
 	const API = {
-		key: 'e9e70c5205086bd8527a08fce2f0c2d2',
+		// Get your API key on https://openweathermap.org/
+		// Pegue sua chave de API em https://openweathermap.org/
+		key: '',
 		base: 'https://api.openweathermap.org/data/2.5',
 	};
 
