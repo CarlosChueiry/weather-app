@@ -3,7 +3,7 @@ import { useWeather } from '../Providers/WeatherContext';
 import './SearchInput.scss';
 
 export default function WeatherDisplay() {
-	const { query, setQuery, search, weather } = useWeather();
+	const { query, setQuery, search, weather, errorMessage } = useWeather();
 
 	const handleInputChange = (e) => {
 		setQuery(e.target.value);
@@ -12,9 +12,11 @@ export default function WeatherDisplay() {
 	return (
 		<>
 			<div
-				className={`search-area ${
-					weather.name !== undefined && 'search-results'
-				}`}
+				className={
+					weather.name !== undefined
+						? 'search-area search-results'
+						: 'search-area'
+				}
 			>
 				<div className="search-box">
 					<input
@@ -29,6 +31,14 @@ export default function WeatherDisplay() {
 						<i className="material-icons">my_location</i>
 					</button>
 				</div>
+				<span
+					className={
+						errorMessage !== '' ? 'search-error error-display' : 'search-error'
+					}
+				>
+					<i className="material-icons">error_outline</i>
+					{errorMessage}
+				</span>
 			</div>
 		</>
 	);

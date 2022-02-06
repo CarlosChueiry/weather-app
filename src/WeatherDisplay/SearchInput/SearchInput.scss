@@ -2,7 +2,8 @@
 	&-area {
 		flex-grow: 1;
 		display: flex;
-		align-items: center;
+		flex-direction: column;
+		justify-content: center;
 		margin-bottom: 80px;
 		transition: 0.5s linear;
 		&.search-results {
@@ -15,8 +16,7 @@
 		border-radius: 100px;
 		width: 400px;
 		padding: 16px;
-		// margin: 50px;
-		// flex-grow: 1;
+		margin-bottom: 8px;
 
 		display: flex;
 		align-items: center;
@@ -51,6 +51,32 @@
 			i {
 				font-size: 28px;
 			}
+		}
+	}
+	&-error {
+		align-self: flex-end;
+		display: flex;
+		align-items: center;
+
+		font-family: 'Open Sans', sans-serif;
+		font-weight: bold;
+		color: rgba(255, 10, 10, 0.8);
+		text-shadow: 1px 1px rgba(50, 50, 70, 0.3);
+
+		font-size: 0px;
+		i {
+			font-size: 0px;
+		}
+		height: 0px;
+		transition: 0.2s linear;
+		&.error-display {
+			height: 20px;
+			i {
+				font-size: 20px;
+				font-weight: bold;
+				margin-right: 2px;
+			}
+			font-size: 16px;
 		}
 	}
 }

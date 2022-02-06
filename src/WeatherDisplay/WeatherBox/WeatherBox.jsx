@@ -8,7 +8,9 @@ export default function WeatherBox() {
 	return (
 		<>
 			<div
-				className={`weather-box ${weather.name !== undefined && 'display-box'}`}
+				className={
+					weather.name !== undefined ? 'weather-box display-box' : 'weather-box'
+				}
 			>
 				{weather.name === undefined ? (
 					''

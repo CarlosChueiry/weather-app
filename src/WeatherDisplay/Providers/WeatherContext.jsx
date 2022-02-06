@@ -7,10 +7,9 @@ export default function WeatherContext(props) {
 	const [weather, setWeather] = useState({});
 	const [date, setDate] = useState('');
 	const [weatherIcon, setWeatherIcon] = useState('');
+	const [errorMessage, setErrorMessage] = useState('');
 	const API = {
-		// Get your API key on https://openweathermap.org/
-		// Pegue sua chave de API em https://openweathermap.org/
-		key: '',
+		key: process.env.REACT_APP_WEATHER_KEY,
 		base: 'https://api.openweathermap.org/data/2.5',
 	};
 
@@ -33,13 +32,25 @@ export default function WeatherContext(props) {
 	}, [weather]);
 
 	const search = (e) => {
+		errorMessage !== '' && setErrorMessage('');
 		if (e.key === 'Enter' || e.type === 'click') {
+			if (query === '') {
+				setErrorMessage('Enter a city name');
+				setWeather({});
+				return;
+			}
 			fetch(`${API.base}/weather?q=${query}&units=metric&appid=${API.key}`)
 				.then((res) => res.json())
 				.then((result) => {
-					setWeather(result);
+					if (result.cod === '404') {
+						setErrorMessage('City not found');
+						setWeather({});
+					} else {
+						setErrorMessage('');
+						setWeather(result);
+						console.log(result);
+					}
 					setQuery('');
-					console.log(result);
 				});
 		}
 	};
@@ -54,6 +65,7 @@ export default function WeatherContext(props) {
 				search,
 				date,
 				weatherIcon,
+				errorMessage,
 			}}
 		>
 			{props.children}
